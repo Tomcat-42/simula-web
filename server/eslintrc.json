@@ -1,0 +1,37 @@
+{
+    "root": true,
+    "extends": ["eslint:recommended"],
+    "env": {
+        "es6": true,
+        "jquery": true,
+        "node": true,
+        "webextensions": true,
+        "browser": true,
+        "jest": true
+    },
+    "plugins": [],
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": 2018
+    },
+    "rules": {
+        "indent": [1, 4],
+        "semi": [1, "always"],
+        "quotes": [1, "double", { "avoidEscape": true }],
+        "prefer-const": 1,
+        "no-unused-vars": 1,
+        "no-extra-parens": 1,
+        "valid-jsdoc": [
+            1,
+            {
+                "requireReturn": false,
+                "requireReturnDescription": false,
+                "requireParamDescription": true,
+                "prefer": {
+                    "return": "returns"
+                }
+            }
+        ],
+        "new-cap": 0
+    }
+}
