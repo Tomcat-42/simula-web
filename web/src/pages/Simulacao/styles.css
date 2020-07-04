@@ -1,0 +1,7 @@
+.simulacao {
+    flex-grow: 1;
+    color: #212121;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

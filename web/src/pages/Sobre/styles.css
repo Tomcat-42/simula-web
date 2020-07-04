@@ -1,0 +1,26 @@
+.sobre {
+    flex-grow: 1;
+    color: #212121;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.sobre img {
+    justify-self: center;
+    align-self: center;
+    height: 180px;
+    width: auto;
+}
+
+#contrib-list * {
+    color: #ddd;
+    background: #212121;
+}
+
+@media screen and (max-width: 575px) {
+    .sobre {
+        font-size: .9rem;
+    }
+}
