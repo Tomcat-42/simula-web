@@ -15,9 +15,11 @@
     "dependencies": {
         "cors": "^2.8.5",
         "express": "^4.17.1",
+        "knex": "^0.21.5",
+        "knex-postgis": "^0.12.0",
         "node": "^14.4.0",
         "path": "^0.12.7",
-        "pg": "^8.2.1"
+        "pg": "^8.3.2"
     },
     "devDependencies": {
         "@types/cors": "^2.8.6",
