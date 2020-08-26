@@ -6,7 +6,7 @@
     "scripts": {
         "dev": "ts-node ./src/server.ts",
         "build": "tsc --esModuleInterop",
-        "start": "nodemon ./dist/src/server.js",
+        "start": "nodemon ./src/server.js",
         "prod": "npm run build && npm run start"
     },
     "keywords": [],
