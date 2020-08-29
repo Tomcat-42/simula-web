@@ -4,7 +4,7 @@ const path = require('path');
 
 module.exports = {
     storage: multer.diskStorage({
-        destination: path.resolve(__dirname, './../tmp'),
+        destination: path.resolve(__dirname, './../temp'),
         filename: (req, file, cb) => {
             crypto.randomBytes(8, (err, res) => {
                 if (err) return cb(err);

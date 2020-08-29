@@ -11,7 +11,7 @@ const app = express();
 app.use(routes);
 
 /* CORS */
-app.use(cors);
+//app.use(cors);
 
 /* body dos requests em JSON */
 app.use(express.json());

@@ -10,6 +10,6 @@ module.exports = {
         id = await connection('espacial_simulacoes')
             .select('espacial_simulacoes.*');
 
-        return response.json(ongs);
+        return response.json(id);
     }
 }
