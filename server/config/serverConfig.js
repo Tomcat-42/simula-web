@@ -2,4 +2,4 @@ const serverConfig = {
     port: 60957,
 }
 
-export default serverConfig;
+module.exports = serverConfig;

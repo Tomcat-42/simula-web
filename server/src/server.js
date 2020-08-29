@@ -1,10 +1,10 @@
-import express from "express";
-import routes from "./routes";
-import path from "path";
-import cors from "cors";
+const express = require('express');
+const server = express();
+const path = require('path');
+const cors = require('cors');
+const routes = require('./routes');
 
-import serverConfig from "../config/serverConfig";
-
+const serverConfig = require('../config/serverConfig');
 const app = express();
 
 /* rotas da api */
