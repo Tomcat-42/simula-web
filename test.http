@@ -1,0 +1,13 @@
+POST localhost:60957/file
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="text"
+
+title
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="image"; filename="README.md"
+Content-Type: image/png
+
+< ./README.md
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
