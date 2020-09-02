@@ -1,18 +1,24 @@
 const connection = require('../database/connection');
-
+const exec = require('child_process').exec;
 
 module.exports = {
     async create(request, response){
-        const { file } = request;
+        const { file, nome_exibicao } = request;
+        
+        const resp = exec(`node ./src/services/loadFileDbService.js ${file.filename} ${nome_exibicao}`);
 
-        /*
-        const { nome_exibicao, dados_simulacao } = request.body;
-        id = await connection('espacial_simulacoes')
-            .select('espacial_simulacoes.*');
-        */
-
-        console.log(file);
-
+        resp.stdout.on('data', (data) => {
+            console.log(`stdout: ${data}`);
+        });
+        
+        resp.stderr.on('data', (data) => {
+            console.error(`stderr: ${data}`);
+        });
+    
+        resp.on('close', (code) => {
+            console.log(`child process exited with code ${code}`);
+        });
+        
         return response.json("fim");
     }
 }

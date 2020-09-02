@@ -6,8 +6,8 @@ Content-Disposition: form-data; name="text"
 
 title
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="file"; filename="README.md"
+Content-Disposition: form-data; name="file"; filename="1.png"
 Content-Type: image/png
 
-< ./README.md
+< ./1.png
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
