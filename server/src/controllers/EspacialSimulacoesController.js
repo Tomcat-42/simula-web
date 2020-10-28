@@ -3,8 +3,8 @@ const exec = require('child_process').exec;
 
 module.exports = {
     async create(request, response){
-        const { file, nome_exibicao } = request;
-        //console.log(request);
+        const { nome_exibicao } = request.body;
+        const file = request.file
 
         const resp = exec(`node ./src/services/loadFileDbService.js ${file.filename} ${nome_exibicao}`);
 
