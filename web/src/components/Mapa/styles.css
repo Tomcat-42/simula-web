@@ -1,0 +1,28 @@
+#cardList {
+    background-color: #212121;
+    color: #ddd;
+    overflow: auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+#cardBody {
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#list {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+#list * {
+    color: #ddd;
+    background-color: #212121;
+    border-color: #424242;
+}
+
+
