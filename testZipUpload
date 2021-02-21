@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+
+usage() {
+    echo "Usage: ./$(basename "${0}") [dir_path]" 1>&2
+    echo "deps: httpie zip" 1>&2
+    exit 1
+}
+echo "${1}"
+if [ -z "${1}" ]; then
+    usage
+    echo "asldnad"
+fi
+
+NOME=$(basename "${1}")
+zip -r "${NOME}".zip "${1}"
+http -f POST :60957/base nome_exibicao="${NOME}" file@"${NOME}".zip
+rm "${NOME}".zip
