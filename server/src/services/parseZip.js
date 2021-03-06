@@ -1,47 +1,134 @@
-// const fs = require("fs");
+const fs = require("fs");
 const path = require("path");
-const unzip = require("unzip");
+const util = require("util");
+// const unzip = require("unzip");
+const extract = require("extract-zip");
 const connection = require("../database/connection");
 // const neatCsv = require("neat-csv");
 const { log } = require("./loggerService");
 //const { stdout } = require("proces");
 // const parse = require("csv-parse");
+// const { convertCSVToArray } = require("convert-csv-to-array");
 
-// async function extractZip(zipPath) {
-//     try {
-//         const dirName = path.basename(zipPath, path.extname(zipPath));
-//         const dirPath = path.dirname(zipPath);
-//         fs.createReadStream(dirPath).pipe(unzip.Extract({ path: dirPath }));
-//         return `${dirPath}/${dirName}`;
-//     } catch (error) {
-//         console.log(`Erro na extração do zip: ${error}`);
-//     }
-// }
+const parse = require("csv-parse");
+const neatCsv = require("neat-csv");
 
 async function extractZip(zipPath) {
-    return new Promise((resolve, reject) => {
-        const dirName = path.basename(zipPath, path.extname(zipPath));
-        const dirPath = path.dirname(zipPath);
-        fs.createReadStream(dirPath)
-            .pipe(unzip.Extract({ path: dirPath }))
-            .on("error", (err) => {
-                log("wrongFileName", err);
-            })
-            .on("end", function () {
-                resolve(`${dirPath}/${dirName}`);
+    try {
+        const extractBasePath = path.resolve("./", "temp");
+        const extractDirPath = path.resolve(
+            extractBasePath,
+            path.basename(zipPath, path.extname(zipPath))
+        );
+        const extractZipPath = path.join(extractBasePath, zipPath);
+
+        await extract(extractZipPath, {
+            dir: extractDirPath,
+        });
+        return `${extractDirPath}`;
+    } catch (error) {
+        console.log(`Erro na extração do zip: ${error}`);
+    }
+}
+
+function processaArquivo(nomeArquivo, cb) {
+    var dados_simulacao;
+    let csvData = [];
+    fs.createReadStream(nomeArquivo)
+        .pipe(parse({ delimiter: ";" }))
+        .on("data", function (csvrow) {
+            csvData.push(csvrow);
+        })
+        .on("error", (err) => {
+            log("wrongFileName", err);
+        })
+        .on("end", function () {
+            let coordenadas = [];
+            let codigosAgentes = [];
+            let x = 0; // apenas para ler poucas entradas e ficar mais rapido de testar
+
+            // console.log(csvData);
+
+            for (let i = 0; i < csvData.length; i++) {
+                coordenadas.push([csvData[i][0], csvData[i][1]]);
+
+                let codAgente = [];
+
+                for (let j = 2; j < csvData[i].length; j++)
+                    codAgente.push(csvData[i][j]);
+
+                if (x++ > 20)
+                    // limite de entradas para teste
+                    break;
+                codigosAgentes.push(codAgente);
+            }
+
+            // console.log(coordenadas);
+
+            let ciclos = codigosAgentes[0].length;
+            dados_simulacao = [ciclos, coordenadas, codigosAgentes];
+
+            cb(dados_simulacao);
+        });
+}
+
+/* TODO: Refatorar para promise para não precisar utilizar o util.promisify*/
+function diretoryTreeToObj(dir, done) {
+    var results = {};
+
+    fs.readdir(dir, function (err, list) {
+        if (err) return done(err);
+
+        var pending = list.length;
+
+        if (!pending) {
+            return done(null, {
+                [path.basename(dir)]: results,
             });
+        }
+
+        list.forEach(function (file) {
+            file = path.resolve(dir, file);
+            fs.stat(file, function (err, stat) {
+                if (stat && stat.isDirectory()) {
+                    diretoryTreeToObj(file, function (err, res) {
+                        results = { ...results, [path.basename(file)]: res };
+                        if (!--pending) done(null, results);
+                    });
+                } else {
+                    /*TODO: Retornar uma promise com o array do csv*/
+                    // processaArquivo(file, (data) => {
+                    //     //console.log(data);
+                    //     results = { ...results, [path.basename(file)]: data };
+                    //     // console.log(results);
+                    //     // console.log(pending);
+                    //     if (!--pending) done(null, results);
+                    // });
+
+                    results = { ...results, [path.basename(file)]: [] };
+
+                    if (!--pending) done(null, results);
+                }
+            });
+            // if (!--pending) done(null, results);
+        });
     });
 }
+
+const diretoryTreeToObjPromise = util.promisify(diretoryTreeToObj);
 
 async function uploadDados(nome_arquivo, nome_exibicao) {
     try {
         const zipPath = await extractZip(nome_arquivo);
-        console.log(zip_path);
+        const dirObj = await diretoryTreeToObjPromise(zipPath);
+        const dados_base = JSON.stringify(dirObj);
+        console.log(dirObj);
 
-        // const obj = await connection("base_simulacoes").insert({
-        //     nome_exibicao,
-        //     dados_base,
-        // });
+        const obj = await connection("base_simulacoes").insert({
+            nome_exibicao,
+            dados_base,
+        });
+        console.log(obj);
 
         // if (obj == null) {
         //     log("onPutFileDB", err);
@@ -56,8 +143,5 @@ if (process.argv.length < 3) {
 } else {
     const nomeArquivo = process.argv[2];
     const nomeExibicao = process.argv[3];
-    console.log(nomeArquivo);
-    console.log(nomeExibicao);
-
     uploadDados(nomeArquivo, nomeExibicao);
 }
