@@ -11,7 +11,7 @@ function CardList(props) {
 
     const changeHandler = (event) => {
         setSelectedFile(event.target.files[0]);
-        setIsSelected(true);
+        setIsFilePicked(true);
     };
 
     const handleSubmission = () => {
@@ -45,7 +45,7 @@ function CardList(props) {
                             name="file"
                             onChange={changeHandler}
                         />
-                        {isSelected ? (
+                        {isFilePicked ? (
                             <div>
                                 <p>Arquivo: {selectedFile.name}</p>
                                 <p>Tipo: {selectedFile.type}</p>
