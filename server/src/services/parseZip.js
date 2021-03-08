@@ -78,7 +78,6 @@ function diretoryTreeToObj(dir, done) {
 
     fs.readdir(dir, function (err, list) {
         if (err) return done(err);
-
         var pending = list.length;
 
         if (!pending) {
@@ -87,7 +86,8 @@ function diretoryTreeToObj(dir, done) {
             });
         }
 
-        list.forEach(function (file) {
+        console.log("RESULTADO:", JSON.stringify(results));
+        results = list.map(function (file) {
             file = path.resolve(dir, file);
             fs.stat(file, function (err, stat) {
                 if (stat && stat.isDirectory()) {
@@ -97,20 +97,20 @@ function diretoryTreeToObj(dir, done) {
                     });
                 } else {
                     /*TODO: Retornar uma promise com o array do csv*/
-                    // processaArquivo(file, (data) => {
-                    //     //console.log(data);
-                    //     results = { ...results, [path.basename(file)]: data };
-                    //     // console.log(results);
-                    //     // console.log(pending);
-                    //     if (!--pending) done(null, results);
-                    // });
+                    return processaArquivo(file, (data) => {
+                        //console.log(data);
+                        results = { ...results, [path.basename(file)]: data };
+                        // console.log(results);
+                        // console.log(pending);
+                        //  if (!--pending) done(null, results);
+                        if (!--pending) return results;
+                    });
 
-                    results = { ...results, [path.basename(file)]: [] };
+                    // results = { ...results, [path.basename(file)]: [] };
 
-                    if (!--pending) done(null, results);
+                    //if (!--pending) done(null, results);
                 }
             });
-            // if (!--pending) done(null, results);
         });
     });
 }

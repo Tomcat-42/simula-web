@@ -1,10 +1,10 @@
-const express = require("express");
+const express = require('express');
 const server = express();
-const path = require("path");
-const cors = require("cors");
-const routes = require("./routes");
+const path = require('path');
+const cors = require('cors');
+const routes = require('./routes');
 
-const serverConfig = require("../config/serverConfig");
+const serverConfig = require('../config/serverConfig');
 const app = express();
 
 /* rotas da api */
