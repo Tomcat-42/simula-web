@@ -86,7 +86,7 @@ function diretoryTreeToObj(dir, done) {
             });
         }
 
-        console.log("RESULTADO:", JSON.stringify(results));
+        // console.log("RESULTADO:", JSON.stringify(results));
         results = list.map(function (file) {
             file = path.resolve(dir, file);
             fs.stat(file, function (err, stat) {
@@ -97,18 +97,18 @@ function diretoryTreeToObj(dir, done) {
                     });
                 } else {
                     /*TODO: Retornar uma promise com o array do csv*/
-                    return processaArquivo(file, (data) => {
-                        //console.log(data);
-                        results = { ...results, [path.basename(file)]: data };
-                        // console.log(results);
-                        // console.log(pending);
-                        //  if (!--pending) done(null, results);
-                        if (!--pending) return results;
-                    });
+                    // return processaArquivo(file, (data) => {
+                    //     //console.log(data);
+                    //     results = { ...results, [path.basename(file)]: data };
+                    //     // console.log(results);
+                    //     // console.log(pending);
+                    //     //  if (!--pending) done(null, results);
+                    //     if (!--pending) return results;
+                    // });
 
-                    // results = { ...results, [path.basename(file)]: [] };
+                    results = { ...results, [path.basename(file)]: [] };
 
-                    //if (!--pending) done(null, results);
+                    if (!--pending) done(null, results);
                 }
             });
         });
@@ -128,11 +128,11 @@ async function uploadDados(nome_arquivo, nome_exibicao) {
             nome_exibicao,
             dados_base,
         });
-        console.log(obj);
+        // console.log(obj);
 
-        // if (obj == null) {
-        //     log("onPutFileDB", err);
-        // }
+        if (obj == null) {
+            log("onPutFileDB", err);
+        }
     } catch (err) {
         console.log("Erro uploadDados zip: " + err);
     }

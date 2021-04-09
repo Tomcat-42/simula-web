@@ -1,13 +1,20 @@
 const connection = require("../database/connection");
 const exec = require("child_process").exec;
+const path = require("path");
 
 module.exports = {
     async create(request, response) {
-        const { nome_exibicao } = request.body;
-        const file = request.file;
+        // const { nome_exibicao } = request.body;
+        const { filename, originalname } = request.file;
+        const nome_exibicao = path.basename(
+            originalname,
+            path.extname(originalname)
+        );
+
+        // console.log(nome_exibicao, filename);
 
         const resp = exec(
-            `node ./src/services/parseZip.js ${file.filename} ${nome_exibicao}`
+            `node ./src/services/parseZip.js ${filename} ${nome_exibicao}`
         );
 
         resp.stdout.on("data", (data) => {
@@ -22,6 +29,6 @@ module.exports = {
             console.log(`child process exited with code ${code}`);
         });
 
-        return response.json("fim");
+        return response.status(200);
     },
 };
