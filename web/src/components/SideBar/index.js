@@ -63,7 +63,7 @@ function CardList(props) {
                             {/* </FormGroup> */}
                             {isFilePicked ? (
                                 <div>
-                                    p>Arquivo: {selectedFile.name}</p>
+                                    <p>Arquivo: {selectedFile.name}</p>
                                     {/* <p>Tipo: {selectedFile.type}</p> */}
                                     {/* <p>Tamanho: {selectedFile.size}</p> */}
                                     {/* <p> */}

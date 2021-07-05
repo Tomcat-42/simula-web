@@ -12,6 +12,7 @@ import {
     faUsers,
     faSearch,
     faSearchLocation,
+    faHistory,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -27,6 +28,7 @@ const icones = {
     individual: <FontAwesomeIcon icon={faUser} />,
     buscar: <FontAwesomeIcon icon={faSearch} />,
     rastrear: <FontAwesomeIcon icon={faSearchLocation} />,
+    logs: <FontAwesomeIcon icon={faHistory} />,
     sobre: <FontAwesomeIcon icon={faUsers} />,
 };
 
@@ -88,6 +90,10 @@ class MainNavbar extends Component {
                                 {icones.rastrear} rastrear
                             </NavLink>
                         </NavDropdown>
+
+                        <NavLink className="route-link nav-link" to="/logs">
+                            {icones.logs} logs
+                        </NavLink>
 
                         <NavLink className="route-link nav-link" to="/sobre">
                             {icones.sobre} sobre
