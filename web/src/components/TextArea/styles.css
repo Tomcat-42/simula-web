@@ -1,0 +1,41 @@
+/* #textArea { */
+/*     /1* background: linear-gradient(to bottom, #e5e5e5 0%, #f2f2f2 100%); *1/ */
+/*     border: none; */
+/*     /1* width: 100%; *1/ */
+/*     -moz-box-sizing: border-box; */
+/*     box-sizing: border-box; */
+/*     /1* border-bottom: 1px dotted #999; *1/ */
+/*     resize: none; */
+/* } */
+
+/* .controls { */
+/*     text-align: right; */
+/*     margin-top: -6px; */
+/* } */
+/* .wrapper select { */
+/*     border-radius: 10px; */
+/*     background: #212121; */
+/*     border: 1px solid #ddd; */
+/*     padding: 10px 25px; */
+/*     font-weight: bold; */
+/*     color: #ddd; */
+/*     border-width: 1px 0 0 1px; */
+/* } */
+
+/* .wrapper select:hover { */
+/*     opacity: 0.8; */
+/* } */
+
+#logsContainer {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#logsContainer * {
+    max-height: 100%;
+}
+
+#visualizacaoRow * {
+    max-height: 100%;
+}
