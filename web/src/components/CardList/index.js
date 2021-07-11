@@ -12,7 +12,7 @@ function CardList(props) {
                 {title || "Lista"}
             </Card.Header>
             <Card.Body id='cardBody'>
-                <ListGroup variant='flush' id='list'>
+                <ListGroup variant='flsush' id='list'>
                     {items.map((item, i) => (
                         <ListGroup.Item key={i}>{item}</ListGroup.Item>
                     ))}

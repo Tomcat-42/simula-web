@@ -9,11 +9,12 @@ import "./styles.css";
 
 L.Icon.Default.imagePath = "images/";
 
-const Mapa = () => {
+const Mapa = (props) => {
+    const {
+        pontos
+    } = props;
     return (
         <div id="wrapper-mapa">
-         
-
             <MapContainer
                 center={[-24.9555, -53.4552]}
                 zoom={13}
@@ -24,14 +25,7 @@ const Mapa = () => {
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-
-                <Marker position={[-24.9555, -53.4552]}>
-                    <Popup>
-                        <div className="point-tooltip">
-                            <strong>Teste</strong>
-                        </div>
-                    </Popup>
-                </Marker>
+                
             </MapContainer>
         </div>
     );

@@ -10,8 +10,10 @@
 #cardBody {
     overflow: auto;
     display: flex;
-    align-items: center;
     justify-content: center;
+}
+.card-body {
+    padding: 0.02rem 0.25rem !important;
 }
 
 #list {
@@ -31,5 +33,5 @@
 }
 
 .leaflet-container {
-    height: 97vh;
+    height: 90vh;
 }

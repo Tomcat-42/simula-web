@@ -32,10 +32,6 @@
     flex-direction: column;
 }
 
-#logsContainer * {
-    max-height: 100%;
-}
-
-#visualizacaoRow * {
+.subItemVisualizacao {
     max-height: 100%;
 }

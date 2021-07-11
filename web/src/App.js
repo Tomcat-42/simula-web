@@ -11,7 +11,9 @@ function App() {
     return (
         <div className="App">
             <MainNavbar />
-            <Routes />
+            <div id="contentWrapper">
+                <Routes />
+            </div>
         </div>
     );
 }
