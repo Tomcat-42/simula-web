@@ -1,0 +1,22 @@
+.item-layer{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+}
+.item-title{
+    overflow-x: auto;
+    text-align: center;
+}
+
+.item-options-button{
+    border: none;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    transition: 100ms ease-in-out;
+}
+
+.item-options-button:hover{
+    background-color: #353333 !important;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+    transition: 100ms ease-in-out;
+}

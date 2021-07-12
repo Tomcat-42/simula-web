@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import CardList from "../../../components/CardList/";
-import Mapa from "../../../components/Mapa/";
-import { Row, Col, Container } from "react-bootstrap";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { Card } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
+import { faTools } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import Mapa from "../../../components/Mapa/";
+import CardList from "../../../components/CardList/";
+import LayerItem from "../../../components/LayerItem";
 import MapContext from '../../../context/MapContext'; 
 import api from '../../../services/api';
 
@@ -65,13 +68,16 @@ const VisualizacaoMapas = (props) => {
                     </Col>
                     <Col sm="3" className="m-0 p-1 subItemVisualizacao">
                         <Card id="toolsCard">
-                            teste
+                            <button className="options-button">
+                                <span>Opções</span>
+                                <FontAwesomeIcon icon={faTools} />
+                            </button>
                         </Card>
                         <div id="cardListLayers">
                             <CardList
                                 title="shapes"
                                 className="layerItem"
-                                items={Array(30).fill("")}
+                                items={Array(3).fill(<LayerItem/>)}
                             />
                         </div>
                     </Col>

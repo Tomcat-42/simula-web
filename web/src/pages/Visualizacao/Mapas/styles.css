@@ -19,9 +19,25 @@
     background-color: #212121;
     height: 9%;
     margin-bottom: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.options-button{
+    background-color: #302f2f;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    border: none;
+    padding: 5px 20px;
+    color: #ddd;
+}
+.options-button span{
+    margin-right: 10px;
 }
 
 #cardListLayers{
     min-height: 90%;
     max-height: 90%;
 }
+
