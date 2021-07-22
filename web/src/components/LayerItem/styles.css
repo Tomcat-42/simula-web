@@ -15,8 +15,41 @@
     transition: 100ms ease-in-out;
 }
 
+.container-controller-ciclo{
+    display: flex;
+    flex-direction: column;
+    background-color: #353333 !important;
+    padding: 5px;
+    border-radius: .25rem;
+    max-width: 50%;
+}
+
+.wrapper-menu-ciclo item-options-button svg:focus{
+    background-color: #353333 !important;
+}
+.wrapper-menu-ciclo{
+    display: flex;
+    justify-content: center;
+    background-color: #353333 !important;
+}
+
+.contador-ciclo-layer{
+    padding: 0 10px;
+    margin-right: 5px;
+}
+
 .item-options-button:hover{
     background-color: #353333 !important;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
     transition: 100ms ease-in-out;
 }
+
+.box-options-layer{
+    padding: 10px 0;
+}
+
+.title-ciclos{
+    background-color: #353333 !important;
+    margin-bottom: 5px;
+}
+

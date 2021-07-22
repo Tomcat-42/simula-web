@@ -3,21 +3,28 @@ const path = require("path");
 const { get } = require("../routes");
 var csv = require("csv-parse");
 
+const transformation = require('transform-coordinates')
+
 
 module.exports = {
+
+    // Retorna a istagem de simulações na pasta data
     all (request, response){
         let files = fs.readdirSync(__dirname+"/../../data");
         return response.json(files);
     },
+
+    // Retorna os dados de uma simulação
     index (request, response){
         let csvData = [];
-        let dados_simulacao;
         const { file } = request.params;
+        const transform = transformation('EPSG:31982', 'EPSG:4326')
         
-        fs.createReadStream(__dirname + "/../../data/simulacao/MonteCarlo_0/Simulacao_0/Espacial_Humanos.csv")
+        fs.createReadStream(__dirname + `/../../data/${file}/MonteCarlo_0/Simulacao_0/Espacial_Humanos.csv`)
             .pipe(csv({ separator: ";" }))
             .on("data", function (csvrow) {
-                csvData.push(csvrow);
+                let [a] = csvrow;
+                csvData.push(a);
             })
             .on("error", (err) => {
                 log("wrongFileName", err);
@@ -25,27 +32,28 @@ module.exports = {
             .on("end", function () {
                 let coordenadas = [];
                 let codigosAgentes = [];
-                let x = 0; // apenas para ler poucas entradas e ficar mais rapido de testar
+                let count = 0; // apenas para ler poucas entradas e ficar mais rapido de testar
 
                 // console.log(csvData);
 
-                for (let i = 0; i < csvData.length; i++) {
-                    coordenadas.push([csvData[i][0], csvData[i][1]]);
+                for (let line of csvData) {
+                    let lineData   = line.split(';')
+                    let codAgente  = [];
+                    lineData       = lineData.map(d=>parseInt(d));
+                    let {x, y} = transform.forward({x: lineData[0], y: lineData[1]})
+                    coordenadas.push([y, x]);
 
-                    let codAgente = [];
+                    for (let i = 2; i < lineData.length-1; i++)
+                        codAgente.push(lineData[i]);
 
-                    for (let j = 2; j < csvData[i].length; j++)
-                        codAgente.push(csvData[i][j]);
-
-                    if (x++ > 20)
-                        break;
                     codigosAgentes.push(codAgente);
+                    if (count++ > 200)
+                        break;
                 }
 
                 let ciclos = codigosAgentes[0].length;
-                dados_simulacao = [ciclos, coordenadas, codigosAgentes];
-
-                response.json(dados_simulacao);
+                console.log(coordenadas)
+                response.json({ciclos, coordenadas, codigosAgentes});
             });
     }
 }

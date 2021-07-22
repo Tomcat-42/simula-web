@@ -8,7 +8,7 @@ function CardList(props) {
     const { title, items } = props;
     return (
         <Card id='cardList'>
-            <Card.Header as='h3' className='title'>
+            <Card.Header as='h3' className='title-card-list'>
                 {title || "Lista"}
             </Card.Header>
             <Card.Body id='cardBody'>

@@ -1,0 +1,19 @@
+
+#mainMenuWrapper{
+    background-color: #212121;
+    padding: 40px 10px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: .25rem;
+}
+
+#mainMenuBody{
+    background-color: #212121;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: none;
+    border: none;
+    justify-content: center;
+}

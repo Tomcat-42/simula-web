@@ -10,6 +10,13 @@ import CardList from "../../../components/CardList/";
 import LayerItem from "../../../components/LayerItem";
 import MapContext from '../../../context/MapContext'; 
 import api from '../../../services/api';
+import ModalMenuOpcoes from "../../../components/ModalMenuOpcoes";
+import ModalSelectSimulacao from "../../../components/ModalSelectSimulacao";
+import CardListLayers from "../../../components/CardListLayers";
+
+import {
+    faLayerGroup
+} from "@fortawesome/free-solid-svg-icons";
 
 import "./styles.css";
 
@@ -17,6 +24,9 @@ const VisualizacaoMapas = (props) => {
     const {
         simulacao
     } = props;
+    
+    const [ mainMenuOpen, setMainMenuOpen]   = useState(false);
+    const [ selectSimulacaoOpen, setSelectSimulacaoOpen]   = useState(false);
 
     const [ pontos, setPoints]   = useState(null);
     const [ nCiclos, setNCiclos] = useState(0);
@@ -52,6 +62,15 @@ const VisualizacaoMapas = (props) => {
         // setPoints(newPontos);
     });
 
+    function carregarSimulacao(){
+        setMainMenuOpen(false);
+        setSelectSimulacaoOpen(true);
+    }
+
+    const functionsMenu = {
+        carregarSimulacao : carregarSimulacao
+    };
+
     return (
         <MapContext>
             <Container
@@ -68,23 +87,31 @@ const VisualizacaoMapas = (props) => {
                     </Col>
                     <Col sm="3" className="m-0 p-1 subItemVisualizacao">
                         <Card id="toolsCard">
-                            <button className="options-button">
+                            <button 
+                                className="options-button"
+                                onClick={()=>setMainMenuOpen(true)}
+                            >
                                 <span>Opções</span>
                                 <FontAwesomeIcon icon={faTools} />
                             </button>
                         </Card>
-                        <div id="cardListLayers">
-                            <CardList
-                                title="shapes"
-                                className="layerItem"
-                                items={Array(3).fill(<LayerItem/>)}
-                            />
-                        </div>
+                        <CardListLayers />
                     </Col>
                 </Row>
             </Container>
+
+            {/* Modais  */}
+            <ModalMenuOpcoes
+                show = {mainMenuOpen}
+                onHide={()=> setMainMenuOpen(false)}
+                functionsMenu = {functionsMenu}
+            />
+            <ModalSelectSimulacao
+                show = {selectSimulacaoOpen}
+                onHide={()=> setSelectSimulacaoOpen(false)}
+            />
         </MapContext>
     );
 }
-
 export default VisualizacaoMapas;
+

@@ -9,6 +9,10 @@
     min-height: 81vh;
 }
 
+.title-card-list{
+    font-size: 1.2rem;
+}
+
 #cardBody {
     overflow: auto;
     display: flex;
