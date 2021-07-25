@@ -1,0 +1,31 @@
+.modal-menu-option{
+    flex: 0 0 calc(16.66% - 20px);
+    background-color: #302f2f;
+    color: aliceblue;
+    margin: 5px;
+    min-width: 200px;
+    height: 160px;
+    border-radius: .25rem;
+    box-shadow: none;
+
+    display: grid;
+    grid-template-rows: 4fr 1fr;
+    transition: 300ms ease-in-out;
+    cursor: pointer;
+}
+.modal-menu-option:hover{
+    background-color: #3b3838;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+    transition: 200ms ease-in-out;
+    transform: scale(1.03);
+}
+
+.menu-option-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+}
+.menu-option-name{
+    text-align: center;
+}

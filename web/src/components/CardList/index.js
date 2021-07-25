@@ -8,11 +8,11 @@ function CardList(props) {
     const { title, items } = props;
     return (
         <Card id='cardList'>
-            <Card.Header as='h3' className='title'>
+            <Card.Header as='h3' className='title-card-list'>
                 {title || "Lista"}
             </Card.Header>
             <Card.Body id='cardBody'>
-                <ListGroup variant='flush' id='list'>
+                <ListGroup variant='flsush' id='list'>
                     {items.map((item, i) => (
                         <ListGroup.Item key={i}>{item}</ListGroup.Item>
                     ))}

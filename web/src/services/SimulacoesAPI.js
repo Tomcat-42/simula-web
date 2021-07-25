@@ -1,9 +1,9 @@
 import api from './api';
 
-class logsAPI {
-    static index() {
+class simulacoesAPI {
+    static all() {
         return new Promise((resolve, reject)=>{
-            api.get("logs", {headers:{"Content-Type" : "application/json"}})
+            api.get("simulacoes", {headers:{"Content-Type" : "application/json"}})
             .then(({data})=>{
                 resolve(data);
             })
@@ -14,9 +14,9 @@ class logsAPI {
         })
     }
 
-    static show(file) {
+    static index(file) {
         return new Promise((resolve, reject)=>{
-            api.get(`logs/${file}`, {headers:{"Content-Type" : "application/json"}})
+            api.get(`simulacoes/${file}`, {headers:{"Content-Type" : "application/json"}})
             .then(({data})=>{
                 resolve(data);
             })
@@ -28,4 +28,4 @@ class logsAPI {
     }
 }
 
-export default logsAPI;
+export default simulacoesAPI;

@@ -13,8 +13,7 @@ function Logs() {
         >
             <Row className="m-0 p-0 flex-grow-1" id="logsRow">
                 <Col sm="12" className="m-0 p-3">
-                    <TextArea
-                    />
+                    <TextArea/>
                 </Col>
             </Row>
         </Container>

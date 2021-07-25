@@ -9,6 +9,7 @@ async function processaArquivo(nomeArquivo) {
     return new Promise((resolve, reject) => {
         var dados_simulacao;
         let csvData = [];
+        
         fs.createReadStream("./temp/" + nomeArquivo)
             .pipe(parse({ delimiter: ";" }))
             .on("data", function (csvrow) {

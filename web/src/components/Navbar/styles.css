@@ -10,6 +10,8 @@
 
 .navbar {
     background-color: #212121;
+    max-height: 10%;
+    min-height: 8%;
 }
 .navbar .navbar-brand {
     color: #dddddd;

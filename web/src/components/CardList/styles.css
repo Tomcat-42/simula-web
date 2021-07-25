@@ -5,22 +5,29 @@
     margin: 0;
     padding: 0;
     border: 0;
+    max-height: 81vh;
+    min-height: 81vh;
+}
+
+.title-card-list{
+    font-size: 1.2rem;
 }
 
 #cardBody {
     overflow: auto;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
 #list {
-    margin-bottom: 10px;
+    margin: 10px 0;
     width: 100%;
+    min-height: 100%;
 }
 
-#list * {
+#list .layerItem {
     color: #ddd;
     background-color: #212121;
     border-color: #424242;
+    
 }

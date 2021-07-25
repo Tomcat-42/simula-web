@@ -1,0 +1,60 @@
+
+.modal-content {
+    border: none !important;
+}
+
+.modal-simulacoes-body{
+    flex: 0 0 calc(16.66% - 20px);
+    background-color: #302f2f;
+    color: aliceblue;
+    margin: 5px;
+    min-width: 200px;
+    height: 160px;
+    border-radius: .25rem;
+    box-shadow: none;
+
+    transition: 300ms ease-in-out;
+    padding: 10px;
+}
+
+.select-simulacoes{
+    border: 1px solid rgba(29, 28, 28, 0.7);
+    border-radius: .25rem;
+    padding: 10px;
+}
+
+.item-select-simulacoes{
+    border-bottom: 1px solid rgba(29, 28, 28, 0.7);
+    padding: 8px 0;
+    text-align: center;
+    color: rgb(163, 163, 163);
+    cursor: pointer;
+}
+
+.item-select-simulacoes:hover{
+    text-shadow: 0 0 10px rgba(255, 255, 255, .4);
+}
+
+.item-select-simulacoes:first-child{
+    padding-top: 0;
+}
+
+.item-select-simulacoes:last-child{
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.buttons-select-simulacao{
+    background-color: #1a1919;
+    box-shadow: 0 0 3px 0 rgba(19, 18, 18, 0.3);
+    border-radius: 3px;
+    border: none;
+    padding: 5px 20px;
+    color: #ddd;
+}
+
+.selected-item-simulacao span{
+    color: rgb(251, 253, 255);
+    text-shadow: 0 0 10px rgba(255, 255, 255, .4);
+    transform: scale(1.05);
+}
