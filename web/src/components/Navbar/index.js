@@ -13,6 +13,8 @@ import {
     faSearch,
     faSearchLocation,
     faHistory,
+    faRunning,
+    faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -21,6 +23,9 @@ import "./styles.css";
 import LogoWide from "../../images/logo-wide-light.png";
 
 const icones = {
+    simulacao: <FontAwesomeIcon icon={faRobot} />,
+    execucao: <FontAwesomeIcon icon={faRunning} />,
+    cadastro: <FontAwesomeIcon icon={faPlus} />,
     simulacao: <FontAwesomeIcon icon={faRobot} />,
     visualizacao: <FontAwesomeIcon icon={faEye} />,
     mapa: <FontAwesomeIcon icon={faMapMarkedAlt} />,
@@ -48,12 +53,30 @@ class MainNavbar extends Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
-                        <NavLink
-                            className="route-link nav-link"
-                            to="/simulacao"
+                        <NavDropdown
+                            title={<>{icones.simulacao} simulação</>}
+                            id="nav-individual"
                         >
-                            {icones.simulacao} simulação
-                        </NavLink>
+                            <NavLink
+                                className="route-link dropdown-item"
+                                to="/simulacao/cadastrar"
+                            >
+                                {icones.cadastro} cadastrar
+                            </NavLink>
+                            <NavLink
+                                className="route-link dropdown-item"
+                                to="/simulacao/executar"
+                            >
+                                {icones.execucao} executar
+                            </NavLink>
+                        </NavDropdown>
+
+                        {/* <NavLink */}
+                        {/*     className="route-link nav-link" */}
+                        {/*     to="/simulacao" */}
+                        {/* > */}
+                        {/*     {icones.simulacao} simulação */}
+                        {/* </NavLink> */}
 
                         <NavDropdown
                             title={<>{icones.visualizacao} visualização</>}
