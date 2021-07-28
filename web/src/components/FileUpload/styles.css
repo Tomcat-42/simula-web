@@ -1,33 +1,3 @@
-#sideBar {
-    background-color: #212121;
-    color: #ddd;
-    overflow: auto;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    height: 1300px;
-}
-
-#sideBarBody {
-    overflow: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
-
-#list {
-    margin-bottom: 10px;
-    width: 100%;
-}
-
-/* #list * { */
-/*     color: #ddd; */
-/*     background-color: #212121; */
-/*     border-color: #424242; */
-/* } */
-
-
 input[type="file"] {
     position: absolute;
     z-index: -1;
@@ -42,11 +12,11 @@ input[type="file"] {
 }
 
 .button {
+    margin: 20px;
     display: inline-block;
     padding: 12px 18px;
     cursor: pointer;
     border-radius: 5px;
-    background-color: #a82525;
     font-size: 11px;
     font-weight: bold;
     color: #fff;

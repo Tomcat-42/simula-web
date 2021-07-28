@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
-import { Card, ListGroup, Button } from "react-bootstrap";
-import FileUpload from "./../FileUpload";
+import { Card, ListGroup, Button, Container } from "react-bootstrap";
+import OpcoesCadastro from "../OpcoesCadastro";
+import FileUpload from "../FileUpload";
 
 import "./styles.css";
 
@@ -13,7 +14,17 @@ function SideBar(props) {
                 {title || "Simulação"}
             </Card.Header>
             <Card.Body id="cardBody">
-                <FileUpload />
+                <Container>
+                    <OpcoesCadastro
+                        opcoes={[
+                            { name: "Cadastrar Base", func: undefined },
+                            { name: "Cadastrar Simulação", func: undefined },
+                            { name: "Buscar", func: undefined },
+                        ]}
+                    />
+
+                    <FileUpload />
+                </Container>
             </Card.Body>
         </Card>
     );
