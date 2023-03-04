@@ -3,13 +3,14 @@
 
 
 "@mapbox/geojsonhint@^3.0.0":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@mapbox/geojsonhint/-/geojsonhint-3.0.1.tgz#46eb0afbfb45915efb73650b90ac64dd8b2274ef"
-  integrity sha512-8BhaDcFnTGP9Z8gLWQfeOMMO4xWmJWN45ZITfjiatI5aP9rmRXTaF2ugvCAJQH+llWTuC+/V+c783ApVoSbnsQ==
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@mapbox/geojsonhint/-/geojsonhint-3.1.0.tgz#991b67fc8584118a915ca01ee6dfdb8744f162b1"
+  integrity sha512-GKyjCP5XqFw9ImJyB7n0kbh/p7ZSOzM/dUB/AS5ZbTk+3DDvogHF7qVvB9KHgtOROcXBe0kF0/J1NmsNDtPSMg==
   dependencies:
     concat-stream "^1.6.1"
     jsonlint-lines "1.7.1"
     minimist "^1.2.5"
+    underscore "1.12.1"
     vfile "^4.0.0"
     vfile-reporter "^5.1.1"
 
@@ -2038,9 +2039,9 @@ minimatch@^3.0.4:
     brace-expansion "^1.1.7"
 
 minimist@^1.2.0, minimist@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
-  integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.8.tgz#c1a464e7693302e082a075cee0c057741ac4772c"
+  integrity sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==
 
 mixin-deep@^1.2.0:
   version "1.3.2"
@@ -3262,6 +3263,11 @@ undefsafe@^2.0.3:
   integrity sha512-nrXZwwXrD/T/JXeygJqdCO6NZZ1L66HrxM/Z7mIq2oPanoN0F1nLx3lwJMu6AwJY69hdixaFQOuoYsMjE5/C2A==
   dependencies:
     debug "^2.2.0"
+
+underscore@1.12.1:
+  version "1.12.1"
+  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.12.1.tgz#7bb8cc9b3d397e201cf8553336d262544ead829e"
+  integrity sha512-hEQt0+ZLDVUMhebKxL4x1BTtDY7bavVofhZ9KZ4aI26X9SRaE+Y3m83XUL1UP2jn8ynjndwCCpEHdUG+9pP1Tw==
 
 underscore@~1.6.0:
   version "1.6.0"
